@@ -6,6 +6,8 @@ A Docker Image to run [Joplin Server](https://github.com/laurent22/joplin/tree/d
 
 ![Joplin Server](https://p195.p4.n0.cdn.getcloudapp.com/items/L1uO8yx1/dc01a283-f2fc-453b-a504-61857ca9c663.png?v=82a88bf8a1e9119f9fa2a511ffe3c55a)
 
+You can find more information about Joplin on their [website](https://joplinapp.org/) or [Github](https://github.com/laurent22/joplin/).
+
 ## Usage
 
 The following `docker-compose.yml` will make Joplin Server available on 22300. There are 2 networks in the example below, one to talk to traefik and one between the Joplin Server and the Database.
