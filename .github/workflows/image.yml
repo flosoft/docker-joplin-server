@@ -40,3 +40,5 @@ jobs:
           push: true
           tags: |
             florider89/joplin-server:testing
+          cache-from: type=registry,ref=florider89/joplin-server:testing
+          cache-to: type=inline
