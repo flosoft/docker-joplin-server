@@ -33,8 +33,6 @@ COPY --chown=$user:$user package*.json ./
 # and build TypeScript files, but we don't have the TypeScript files at
 # this point)
 
-RUN npm ci --ignore-scripts
-
 COPY --chown=$user:$user packages/fork-sax/package*.json ./packages/fork-sax/
 COPY --chown=$user:$user packages/lib/package*.json ./packages/lib/
 COPY --chown=$user:$user packages/renderer/package*.json ./packages/renderer/
@@ -42,6 +40,9 @@ COPY --chown=$user:$user packages/tools/package*.json ./packages/tools/
 COPY --chown=$user:$user packages/server/package*.json ./packages/server/
 COPY --chown=$user:$user lerna.json .
 COPY --chown=$user:$user tsconfig.json .
+
+RUN npm ci --ignore-scripts
+
 
 # The following have postinstall scripts so we need to copy all the files.
 # Since they should rarely change this is not an issue
