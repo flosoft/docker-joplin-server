@@ -48,6 +48,12 @@ COPY --chown=$user:$user packages/turndown ./packages/turndown
 COPY --chown=$user:$user packages/turndown-plugin-gfm ./packages/turndown-plugin-gfm
 COPY --chown=$user:$user packages/fork-htmlparser2 ./packages/fork-htmlparser2
 
+COPY --chown=$user:$user packages/fork-sax ./packages/fork-sax
+COPY --chown=$user:$user packages/lib ./packages/lib
+COPY --chown=$user:$user packages/renderer ./packages/renderer
+COPY --chown=$user:$user packages/tools ./packages/tools
+COPY --chown=$user:$user packages/server ./packages/server
+
 RUN npm ci --ignore-scripts
 
 RUN ls -la /home/$user
@@ -56,11 +62,7 @@ RUN ls -la /home/$user
 
 RUN npm run bootstrap
 
-COPY --chown=$user:$user packages/fork-sax ./packages/fork-sax
-COPY --chown=$user:$user packages/lib ./packages/lib
-COPY --chown=$user:$user packages/renderer ./packages/renderer
-COPY --chown=$user:$user packages/tools ./packages/tools
-COPY --chown=$user:$user packages/server ./packages/server
+
 
 # Finally build everything, in particular the TypeScript files.
 
