@@ -1,6 +1,6 @@
 # docker-joplin-server
 
-[![Docker Build Status](https://img.shields.io/docker/cloud/build/florider89/joplin-server.svg)](https://hub.docker.com/r/florider89/joplin-server/) [![Docker Pulls](https://img.shields.io/docker/pulls/florider89/joplin-server.svg)](https://hub.docker.com/r/florider89/joplin-server/) [![Docker Automated build](https://img.shields.io/docker/cloud/automated/florider89/joplin-server.svg)](https://hub.docker.com/r/florider89/joplin-server/)
+[![Docker Build Status](https://img.shields.io/github/workflow/status/flosoft/docker-joplin-server/ci?label=docker%20build&style=for-the-badge)](https://hub.docker.com/r/florider89/joplin-server/) [![Docker Pulls](https://img.shields.io/docker/pulls/florider89/joplin-server.svg?style=for-the-badge)](https://hub.docker.com/r/florider89/joplin-server/)
 
 A Docker Image to run [Joplin Server](https://github.com/laurent22/joplin/tree/dev/packages/server).
 
