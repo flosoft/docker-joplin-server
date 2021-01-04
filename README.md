@@ -14,7 +14,7 @@ The following `docker-compose.yml` will make Joplin Server available on 22300. T
 
 ```yaml
 version: '3'
-  
+
 services:
     app:
         environment:
@@ -75,9 +75,9 @@ You will need to put a front-end server to serve the content. I'd recommend trae
 
 Currently there is only one version as there is no release yet for the server.
 
-`latest`: regular builds of the `dev` branch. This will change to the latest release once available.
+`latest`: Latest server release as per recommended Dockerfile.
 
-`latest-alpine`: EXPERIMENTAL builds using Alpine Linux as base image of the `dev` branch. This will change to the latest release once available.
+`latest-alpine`: EXPERIMENTAL builds using Alpine of latest release.
 
 `master[-alpine]`: Images built testing CI / Image changes. Should not be used on systems you want to have a working instance of Joplin Server on.
 
