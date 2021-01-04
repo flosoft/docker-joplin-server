@@ -8,7 +8,7 @@ on:
       - 'v*.*.*'
 
 jobs:
-  multi:
+  build-standard:
     runs-on: ubuntu-latest
     steps:
       -
@@ -27,7 +27,9 @@ jobs:
         uses: crazy-max/ghaction-docker-meta@v1
         with:
           images: florider89/joplin-server # list of Docker images to use as base name for tags
-          tag-sha: false # add git short SHA as Docker tag
+          tag-semver: |
+            {{version}}
+            {{major}}.{{minor}}
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
