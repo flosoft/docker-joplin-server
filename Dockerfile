@@ -2,12 +2,10 @@
 
 FROM node:12
 
-RUN apt-get update
-RUN apt-get --yes install vim
+#RUN apt-get update
+#RUN apt-get --yes install vim
 
 ARG user=joplin
-#ARG JOPLIN_VERSION=0.0
-
 
 RUN useradd --create-home --shell /bin/bash $user
 USER $user
@@ -17,10 +15,6 @@ ENV NODE_ENV development
 WORKDIR /home/$user
 
 RUN mkdir /home/$user/logs
-RUN mkdir /home/$user/docker-src
-
-#RUN wget -qO- https://github.com/laurent22/joplin/archive/${JOPLIN_VERSION}.tar.gz | tar xz --strip 1
-RUN wget -qO- https://github.com/laurent22/joplin/archive/dev.tar.gz | tar xz --strip 1 -C /home/$user/docker-src
 
 # To take advantage of the Docker cache, we first copy all the package.json
 # and package-lock.json files, as they rarely change? and then bootstrap
@@ -33,7 +27,7 @@ RUN wget -qO- https://github.com/laurent22/joplin/archive/dev.tar.gz | tar xz --
 # We can't run boostrap with "--ignore-scripts" because that would
 # prevent certain sub-packages, such as sqlite3, from being built
 
-RUN cp /home/$user/docker-src/package*.json ./
+COPY --chown=$user:$user package*.json ./
 
 # Install the root scripts but don't run postinstall (which would bootstrap
 # and build TypeScript files, but we don't have the TypeScript files at
@@ -41,25 +35,20 @@ RUN cp /home/$user/docker-src/package*.json ./
 
 RUN npm install --ignore-scripts
 
-RUN mkdir -p ./packages/fork-sax/
-RUN cp /home/$user/docker-src/packages/fork-sax/package*.json ./packages/fork-sax/
-RUN mkdir -p ./packages/lib/
-RUN cp /home/$user/docker-src/packages/lib/package*.json ./packages/lib/
-RUN mkdir -p ./packages/renderer/
-RUN cp /home/$user/docker-src/packages/renderer/package*.json ./packages/renderer/
-RUN mkdir -p ./packages/tools/
-RUN cp /home/$user/docker-src/packages/tools/package*.json ./packages/tools/
-RUN mkdir -p ./packages/server/
-RUN cp /home/$user/docker-src/packages/server/package*.json ./packages/server/
-RUN cp /home/$user/docker-src/lerna.json .
-RUN cp /home/$user/docker-src/tsconfig.json .
+COPY --chown=$user:$user packages/fork-sax/package*.json ./packages/fork-sax/
+COPY --chown=$user:$user packages/lib/package*.json ./packages/lib/
+COPY --chown=$user:$user packages/renderer/package*.json ./packages/renderer/
+COPY --chown=$user:$user packages/tools/package*.json ./packages/tools/
+COPY --chown=$user:$user packages/server/package*.json ./packages/server/
+COPY --chown=$user:$user lerna.json .
+COPY --chown=$user:$user tsconfig.json .
 
 # The following have postinstall scripts so we need to copy all the files.
 # Since they should rarely change this is not an issue
 
-RUN cp -r /home/$user/docker-src/packages/turndown ./packages/turndown
-RUN cp -r /home/$user/docker-src/packages/turndown-plugin-gfm ./packages/turndown-plugin-gfm
-RUN cp -r /home/$user/docker-src/packages/fork-htmlparser2 ./packages/fork-htmlparser2
+COPY --chown=$user:$user packages/turndown ./packages/turndown
+COPY --chown=$user:$user packages/turndown-plugin-gfm ./packages/turndown-plugin-gfm
+COPY --chown=$user:$user packages/fork-htmlparser2 ./packages/fork-htmlparser2
 
 RUN ls -la /home/$user
 
@@ -67,19 +56,15 @@ RUN ls -la /home/$user
 
 RUN npm run bootstrap
 
-RUN cp -r /home/$user/docker-src/packages/fork-sax ./packages/
-RUN cp -r /home/$user/docker-src/packages/lib ./packages/
-RUN cp -r /home/$user/docker-src/packages/renderer ./packages/
-RUN cp -r /home/$user/docker-src/packages/tools ./packages/
-RUN cp -r /home/$user/docker-src/packages/server ./packages/
-
-RUN cp /home/$user/docker-src/tsconfig.json ./
-RUN rm -rf /home/$user/docker-src/
+COPY --chown=$user:$user packages/fork-sax ./packages/fork-sax
+COPY --chown=$user:$user packages/lib ./packages/lib
+COPY --chown=$user:$user packages/renderer ./packages/renderer
+COPY --chown=$user:$user packages/tools ./packages/tools
+COPY --chown=$user:$user packages/server ./packages/server
 
 # Finally build everything, in particular the TypeScript files.
 
 RUN npm run build
-
 
 EXPOSE 22300
 
