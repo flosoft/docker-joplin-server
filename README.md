@@ -77,6 +77,10 @@ Currently there is only one version as there is no release yet for the server.
 
 `latest`: regular builds of the `dev` branch. This will change to the latest release once available.
 
+`latest-alpine`: EXPERIMENTAL builds using Alpine Linux as base image of the `dev` branch. This will change to the latest release once available.
+
+`master[-alpine]`: Images built testing CI / Image changes. Should not be used on systems you want to have a working instance of Joplin Server on.
+
 ## Contribute
 
 Feel free to contribute to this Docker image on [Github](https://github.com/flosoft/docker-joplin-server).
