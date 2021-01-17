@@ -44,8 +44,7 @@ RUN npm install --ignore-scripts
 COPY --chown=$user:$user packages/fork-sax/package*.json ./packages/fork-sax/
 COPY --chown=$user:$user packages/renderer/package*.json ./packages/renderer/
 COPY --chown=$user:$user packages/tools/package*.json ./packages/tools/
-RUN sed 's/0.25.2/0.27.0/g' packages/tools/package.json > packages/tools/package.json
-RUN cat packages/tools/package.json
+RUN sed -i 's/"sharp": "^0.25.2"/"sharp": "^0.27.0"/' packages/tools/package.json
 COPY --chown=$user:$user packages/lib/package*.json ./packages/lib/
 COPY --chown=$user:$user lerna.json .
 COPY --chown=$user:$user tsconfig.json .
