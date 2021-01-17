@@ -5,6 +5,7 @@ FROM ubuntu:20.10
 
 RUN apt-get update
 RUN apt-get --yes install nodejs npm git
+RUN npm config set python "$(which python3)"
 
 ARG user=joplin
 
