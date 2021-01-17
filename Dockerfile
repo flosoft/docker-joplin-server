@@ -48,9 +48,8 @@ COPY --chown=$user:$user packages/turndown ./packages/turndown
 COPY --chown=$user:$user packages/turndown-plugin-gfm ./packages/turndown-plugin-gfm
 COPY --chown=$user:$user packages/fork-htmlparser2 ./packages/fork-htmlparser2
 
-#RUN ls -la /home/$user
-
 # Then bootstrap only, without compiling the TypeScript files
+
 RUN npm run bootstrap
 
 # We have a separate step for the server files because they are more likely to
