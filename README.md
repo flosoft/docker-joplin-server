@@ -16,6 +16,7 @@ You can find more information about Joplin on their [website](https://joplinapp.
 | -------------------- | -------- | -------------------------- | ------------------------------------------------------ |
 | `APP_BASE_URL`       | Yes      | https://joplin.your.domain | The URL where your Joplin Instance will be served from |
 | `APP_PORT`           | Yes      | 22300                      | The port on which your Joplin instance will be running |
+| `DB_CLIENT`          | No       | pg                         | Use `pg` for postgres.                                 |
 | `POSTGRES_PASSWORD`  | No       | joplin                     | Postgres DB password                                   |
 | `POSTGRES_DATABASE`  | No       | joplin                     | Postgres DB name                                       |
 | `POSTGRES_USER`      | No       | joplin                     | Postgres Username                                      |
