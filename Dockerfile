@@ -1,9 +1,10 @@
 # https://versatile.nl/blog/deploying-lerna-web-apps-with-docker
 
-FROM node:12
+#FROM node:12
+FROM ubuntu:20.10
 
-#RUN apt-get update
-#RUN apt-get --yes install vim
+RUN apt-get update
+RUN apt-get --yes install nodejs npm git
 
 ARG user=joplin
 
@@ -49,7 +50,6 @@ COPY --chown=$user:$user packages/turndown-plugin-gfm ./packages/turndown-plugin
 COPY --chown=$user:$user packages/fork-htmlparser2 ./packages/fork-htmlparser2
 
 # Then bootstrap only, without compiling the TypeScript files
-
 RUN npm run bootstrap
 
 # We have a separate step for the server files because they are more likely to
