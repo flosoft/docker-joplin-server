@@ -4,7 +4,10 @@
 FROM ubuntu:20.10
 
 RUN apt-get update
+#python3 as sqlite3 is failing to build
+# https://github.com/mapbox/node-sqlite3/issues/1413
 RUN apt-get --yes install nodejs npm git python3
+RUN ln -sf python3 /usr/bin/python
 RUN npm config set python "$(which python3)"
 
 ARG user=joplin

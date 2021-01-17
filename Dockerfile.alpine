@@ -7,6 +7,8 @@ FROM node:12-alpine3.12
 #ENV PYTHONUNBUFFERED=1
 #RUN apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python
 # Needed for both amd64 and arm64 on alpine.
+# Waiting for https://github.com/lovell/sharp-libvips/issues/72 to be resolved
+# prior to multi-arch
 RUN apk add --update --no-cache alpine-sdk
 
 #RUN apt-get update
