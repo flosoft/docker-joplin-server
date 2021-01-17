@@ -1,10 +1,10 @@
 # https://versatile.nl/blog/deploying-lerna-web-apps-with-docker
 
-FROM node:15-alpine3.12
+FROM node:12-alpine3.12
 
 #Check if this is still needed in subsequent builds
-ENV PYTHONUNBUFFERED=1
-RUN apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python
+#ENV PYTHONUNBUFFERED=1
+#RUN apk add --update --no-cache python3 alpine-sdk && ln -sf python3 /usr/bin/python
 
 #RUN apt-get update
 #RUN apt-get --yes install vim
@@ -53,7 +53,6 @@ COPY --chown=$user:$user packages/turndown-plugin-gfm ./packages/turndown-plugin
 COPY --chown=$user:$user packages/fork-htmlparser2 ./packages/fork-htmlparser2
 
 # Then bootstrap only, without compiling the TypeScript files
-
 RUN npm run bootstrap
 
 # We have a separate step for the server files because they are more likely to
