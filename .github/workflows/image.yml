@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: laurent22/joplin
-          ref: server-v1.6.4
+          ref: docker_server_update
           path: joplin
       -
         name: Docker meta
@@ -74,7 +74,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: laurent22/joplin
-          ref: server-v1.6.4
+          ref: docker_server_update
           path: joplin
       -
         name: Docker meta
