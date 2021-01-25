@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: laurent22/joplin
-          ref: 0b14d927ce51c3b31001d286fbbd0194a48f35bf
+          ref: server-v1.7.2
           path: joplin
       -
         name: Docker meta
