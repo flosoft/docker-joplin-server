@@ -42,7 +42,8 @@ services:
             - POSTGRES_DATABASE=joplin
             - POSTGRES_USER=joplin 
             - POSTGRES_PORT=5432 
-            - POSTGRES_HOST=db 
+            - POSTGRES_HOST=db
+            - DB_CLIENT=pg
         restart: unless-stopped
         image: florider89/joplin-server:latest
         ports:
@@ -85,6 +86,7 @@ services:
             - POSTGRES_USER=joplin
             - POSTGRES_PORT=5432
             - POSTGRES_HOST=db
+            - DB_CLIENT=pg
         restart: unless-stopped
         image: florider89/joplin-server:latest
         networks:
