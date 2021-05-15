@@ -9,6 +9,7 @@ RUN apt-get update
 RUN apt-get --yes install nodejs npm git python3
 RUN ln -sf python3 /usr/bin/python
 RUN npm config set python "$(which python3)"
+RUN npm config set registry http://registry.npmjs.org/
 
 ARG user=joplin
 
