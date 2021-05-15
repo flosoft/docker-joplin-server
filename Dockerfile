@@ -26,7 +26,8 @@ RUN mkdir /home/$user/logs
 # this point)
 
 COPY --chown=$user:$user package*.json ./
-RUN npm config set registry http://registry.npmjs.org/
+# If we're getting certificate errors, this is the fix.
+#RUN npm config set registry http://registry.npmjs.org/
 RUN npm install --ignore-scripts
 
 # To take advantage of the Docker cache, we first copy all the package.json
