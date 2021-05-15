@@ -4,6 +4,13 @@
 
 A Docker Image to run [Joplin Server](https://github.com/laurent22/joplin/tree/dev/packages/server).
 
+## IMPORTANT - v1 to v2 breaking change!
+With Joplin Server v2 coming soon, please be sure to read the post on the [Joplin forum](https://discourse.joplinapp.org/t/major-breaking-change-in-coming-joplin-server-2-0/17254?u=florider).
+Note that data will not be migrated - and you need to start fresh again as explained in the forum post.
+You'll be able to continue to use the following tag for v1: `docker pull florider89/joplin-server:1.7.2`
+
+Current V2 tags: `master`.
+
 ![Joplin Server](https://p195.p4.n0.cdn.getcloudapp.com/items/L1uO8yx1/dc01a283-f2fc-453b-a504-61857ca9c663.png?v=82a88bf8a1e9119f9fa2a511ffe3c55a)
 
 You can find more information about Joplin on their [website](https://joplinapp.org/) or [Github](https://github.com/laurent22/joplin/).
@@ -129,7 +136,7 @@ Currently there is only one version as there is no release yet for the server.
 
 `latest-alpine`: EXPERIMENTAL builds using Alpine of latest release.
 
-`master[-alpine]`: Images built testing CI / Image changes. Should not be used on systems you want to have a working instance of Joplin Server on.
+`master[-alpine]`: Images built testing CI / Image changes. Should not be used on systems you want to have a working instance of Joplin Server on. Currently V2 Beta - see notice at the top!
 
 ## Contribute
 
