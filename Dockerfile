@@ -9,7 +9,6 @@ RUN apt-get update
 RUN apt-get --yes install nodejs npm git python3
 RUN ln -sf python3 /usr/bin/python
 RUN npm config set python "$(which python3)"
-RUN npm config set registry http://registry.npmjs.org/
 
 ARG user=joplin
 
@@ -27,6 +26,7 @@ RUN mkdir /home/$user/logs
 # this point)
 
 COPY --chown=$user:$user package*.json ./
+RUN npm config set registry http://registry.npmjs.org/
 RUN npm install --ignore-scripts
 
 # To take advantage of the Docker cache, we first copy all the package.json
