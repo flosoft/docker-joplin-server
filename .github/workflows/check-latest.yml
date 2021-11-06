@@ -14,7 +14,7 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v2
       with:
-        token: ${{ secrets.GITHUB_TOKEN }} # Required due to: https://github.community/t/github-action-not-triggering-gh-pages-upon-push/16096
+        token: ${{ secrets.GH_PAT }} # Required due to: https://github.community/t/github-action-not-triggering-gh-pages-upon-push/16096
 
     - run: |
         RELEASE_VER=$(git -c 'versionsort.suffix=-' \
