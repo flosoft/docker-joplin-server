@@ -11,6 +11,7 @@ FROM node:16-bullseye
 RUN apt-get update \
     && apt-get install -y \
     python \
+    cmake \
     && rm -rf /var/lib/apt/lists/*
 
 #RUN ln -sf python3 /usr/bin/python
