@@ -71,7 +71,7 @@ The following `docker-compose.yml` will make Joplin Server run and apply the lab
 
 Note that there are 2 networks in the example below, one to talk to traefik (`traefik_default`) and one between the Joplin Server and the Database, ensuring that these hosts are not exposed.
 
-You may need to double check the entrypoint name (`websecure`) and certresolver (`lewildcardresolver`) to match your Traefik configuration
+You may need to double check the entrypoint name (`websecure`) and certresolver (`lewildcardresolver`) to match your Traefik configuration.
 
 ```yaml
 version: '3'
