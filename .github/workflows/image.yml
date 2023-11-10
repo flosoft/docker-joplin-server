@@ -7,7 +7,8 @@ on:
 
 jobs:
   build-standard:
-    runs-on: ubuntu-latest
+    #runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       -
         name: Checkout Dockerfile
@@ -51,7 +52,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v5
         env:
-          NODE_OPTIONS: --max-old-space-size=4096
+          NODE_OPTIONS: --max-old-space-size=8192
         with:
           context: ./joplin/
           file: ./Dockerfile
