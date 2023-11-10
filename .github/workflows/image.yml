@@ -55,7 +55,7 @@ jobs:
           NODE_OPTIONS: --max-old-space-size=8192
         with:
           context: ./joplin/
-          file: ./Dockerfile
+          file: ./joplin/Dockerfile.server
           platforms: linux/amd64,linux/arm64,linux/arm/v7
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
