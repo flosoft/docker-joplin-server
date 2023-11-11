@@ -7,8 +7,8 @@ on:
 
 jobs:
   build-standard:
-    #runs-on: ubuntu-latest
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
+    #runs-on: self-hosted
     steps:
       -
         name: Checkout Dockerfile
@@ -27,7 +27,7 @@ jobs:
       -
         name: Docker meta
         id: docker_meta
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@v4
         with:
           images: florider89/joplin-server # list of Docker images to use as base name for tags
           tags: |
@@ -51,8 +51,8 @@ jobs:
       -
         name: Build and push
         uses: docker/build-push-action@v4
-        env:
-          NODE_OPTIONS: --max-old-space-size=8192
+        #env:
+        #  NODE_OPTIONS: --max-old-space-size=8192
         with:
           context: ./joplin/
           file: ./joplin/Dockerfile.server
