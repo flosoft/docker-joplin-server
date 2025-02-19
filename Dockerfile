@@ -2,11 +2,11 @@
 # Build stage
 # =============================================================================
 
-FROM node:18-bullseye AS builder
+FROM node:18 AS builder
 
 RUN apt-get update \
     && apt-get install -y \
-    python-is-python2 tini rsync libcairo2-dev libpango1.0-dev \
+    python3 tini \
     && rm -rf /var/lib/apt/lists/*
 
 # Enables Yarn
@@ -53,7 +53,7 @@ RUN BUILD_SEQUENCIAL=1 yarn install --inline-builds \
 # from a smaller base image.
 # =============================================================================
 
-FROM node:18-bullseye-slim
+FROM node:18-slim
 
 ARG user=joplin
 RUN useradd --create-home --shell /bin/bash $user
